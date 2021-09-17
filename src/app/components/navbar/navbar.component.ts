@@ -16,8 +16,7 @@ export class NavbarComponent implements OnInit {
       filter( event => event instanceof NavigationEnd)
     ).subscribe(
       event => this.currentRoute = event
-    )
-    
+    ) 
   }
 
   ngOnInit(): void {

@@ -1,16 +1,27 @@
-body {font-family: 'Open Sans', sans-serif; line-height: 1.6; margin: 0; color: #666;background: #f9f9f9;}
-a {color:#8bc53f}
-a:hover {color:#7aad37;text-decoration: none}
+:root {
+    --color-primary: #8bc53f;
+    --color-primary-dark: #7aad37;
+}
+body {font-family: 'Open Sans', sans-serif; line-height: 1.6; margin: 0; color: #666;background: #f9f9f9}
+a {color:var(--color-primary);text-decoration: none}
+a:hover {color:var(--color-primary-dark);text-decoration: none}
 
-.bg-primary {background-color: #8bc53f !important}
+.text-primary {color:var(--color-primary) !important}
+.bg-primary {background-color: var(--color-primary) !important}
 
-.btn {border:0;transform:scale(1);transition: .3s ease-in-out;border-radius: 50px;padding: .375rem 1.25rem;}
+nav.navbar {background: var(--color-primary)}
+.nav-link {color: #fbfcf9}
+.nav-link:hover, .nav-link:focus {color: #fff;text-shadow: 0 0 5px rgb(255 255 255 / 30%)}
+.nav-item:last-child {background: #fff; color: var(--color-primary); border-radius: 25px; padding-left: 15px; padding-right: 15px}
+.nav-item:last-child .nav-link, .nav-item:last-child .nav-link:hover {color: var(--color-primary)}
+
+.btn {border:0;transform:scale(1);transition: .1s ease-out;border-radius: 50px;padding: .375rem 1.25rem}
     .btn:hover {transform:scale(1.02);box-shadow: 0 5px 15px rgb(0 0 0 / .2)}
     .btn.focus, .btn:focus { outline: 0; box-shadow: 0 0 15px 2px hsl(86 54% 51% / .3); }
-.btn-primary {background: #8bc53f; color: #fff}
+.btn-primary {background: var(--color-primary); color: #fff}
     .btn-primary:hover {background: #97cb52}
-    .btn-primary:focus, .btn-primary:active {background: #7aad37}
-    .btn-primary.disabled, .btn-primary:disabled {color: #f4f4f4;background-color: #7cb530;border-color: #7cb530}
+    .btn-primary:focus, .btn-primary:active {background: var(--color-primary-dark)}
+    .btn-primary.disabled, .btn-primary:disabled {color: #fff;background-color: var(--color-primary-dark);border-color: var(--color-primary-dark)}
     .btn-primary:hover.disabled, .btn-primary:hover:disabled {transform:unset;cursor: not-allowed}
 .btn-filter {position: fixed; bottom: 20px; left: 50%; transform: translate(-50%); z-index: 5; opacity: 1; background: #fff; color: #888;box-shadow:0 0 20px #efefef}
     .btn-filter:hover {transform: translate(-50%) scale(1.1)}
@@ -25,12 +36,13 @@ select.form-control { background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0i
 .card {border: 0; box-shadow: 0 0 20px #efefef;border-radius: 10px; overflow: hidden}
 .card-footer { padding: .75rem 1.25rem; background-color: rgba(0,0,0,.02); border-top: .5px solid rgba(0,0,0,.075)}
 
+/* Responsive Table*/
 .table {background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 0 20px #efefef}
     .table thead th {border-bottom: 2px solid #f9f9f9}
     .table td, .table th {border-top: 1px solid #f1f1f1}
 
-.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{background-color:#8bc53f}
-.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus { background: #7aad37; }
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{background-color:var(--color-primary)}
+.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus { background: var(--color-primary-dark); }
 
 .modal-content {border: 0; border-radius: 7px; box-shadow: 0 0 15px 0 rgb(0 0 0 / .5)}
 .modal-header {box-shadow: 0 2px 15px 5px rgb(0 0 0 / .03)}
@@ -38,7 +50,7 @@ select.form-control { background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0i
     .modal-header, .modal-footer {border:0}
 
 
-@media (max-width: 480px){
+@media (max-width: 720px){
     .modal-dialog {margin: 20px;}
     table, thead, tbody, th, td, tr {display: block}
     thead tr {position: absolute; top: -9999px; left: -9999px}

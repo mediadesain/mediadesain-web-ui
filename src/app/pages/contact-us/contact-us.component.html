@@ -1,17 +1,23 @@
 <section>
     <div class="container-sm">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15865.168267884172!2d106.878565!3d-6.2251682!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x29296160d2dbda46!2sBassura%20city%20tower%20F!5e0!3m2!1sen!2sid!4v1593618988306!5m2!1sen!2sid" height="300" frameborder="0" style="border:0;width:100%;" allowfullscreen=""></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15865.168267884172!2d106.878565!3d-6.2251682!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x29296160d2dbda46!2sBassura%20city%20tower%20F!5e0!3m2!1sen!2sid!4v1593618988306!5m2!1sen!2sid" height="300" style="border: 1px solid #ddd; width: 100%; border-radius: 15px; box-shadow: 0 0 15px 0 rgb(0 0 0 / 10%);"></iframe>
       <div class="row">
         <div class="col-sm-8">
-          <form>
+          <form #contactForm="ngForm" (ngSubmit)="submit(contactForm.value)">
             <div class="form-group mb-3">
               <label>Nama</label>
-              <input type="text" class="form-control" placeholder="John Doe" name="name" ngModel required>
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': name.errors?.required && name.dirty}" placeholder="John Doe" name="name" ngModel #name="ngModel" required>
+              <div class="invalid-feedback" *ngIf="name.errors?.required && name.dirty">
+                <small><i>Masukan Nama Anda</i></small>
+              </div>
             </div>
             <div class="row mb-3">
               <div class="form-group col-md-6">
                 <label>Email</label>
-                <input type="email" class="form-control" placeholder="Email" name="email" ngModel required>
+                <input type="email" class="form-control" [ngClass]="{'is-invalid': email.errors?.required && email.dirty}" placeholder="Email" name="email" ngModel #email="ngModel" required>
+                <div class="invalid-feedback" *ngIf="email.errors?.required && email.dirty">
+                    <small><i>Masukan kontak kamu minimal 1 email untuk mendapatkan respon dari kami</i></small>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <label>Phone Number <small class="text-muted">(Optional)</small></label>
@@ -31,10 +37,13 @@
             </div>
             <div class="form-group mb-3">
               <label>Pesan</label>
-              <textarea class="form-control" style="height:200px" name="message" ngModel required></textarea>
+              <textarea style="height:200px" class="form-control" [ngClass]="{'is-invalid': message.errors?.required && message.dirty }" name="message" ngModel #message="ngModel" required></textarea>
+              <div class="invalid-feedback" *ngIf="message.errors?.required && message.dirty">
+                <small><i>Masukan pessan yang akan disampaikan</i></small>
+            </div>
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!contactForm.form.valid">Submit</button>
             </div>
             <p class="text-center"><i class="fas fa-circle-notch fa-spin"></i> Silahkan Tunggu</p>
           </form>

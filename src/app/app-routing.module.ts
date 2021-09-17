@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'kelas', loadChildren: () => import('./pages/learn/learn.module').then(m => m.LearnModule) },
   { path: 'kolaborasi', loadChildren: () => import('./pages/collaborator/collaborator.module').then(m => m.CollaboratorModule) },
   { path: 'projek', loadChildren: () => import('./pages/projects/projects.module').then(m => m.ProjectsModule) },
-  { path: 'profile', loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule) },
+  { path: 'akun-saya', loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule) },
   { path: 'kebijakan-privasi', loadChildren: () => import('./pages/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule) },
   { path: 'tentang-kami', loadChildren: () => import('./pages/about-us/about-us.module').then(m => m.AboutUsModule) },
   { path: 'hubungi-kami', loadChildren: () => import('./pages/contact-us/contact-us.module').then(m => m.ContactUsModule) },
