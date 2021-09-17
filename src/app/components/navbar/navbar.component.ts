@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -8,16 +6,8 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  currentRoute;
-  constructor(
-    private router: Router
-  ) {
-    this.router.events.pipe(
-      filter( event => event instanceof NavigationEnd)
-    ).subscribe(
-      event => this.currentRoute = event
-    ) 
-  }
+
+  constructor() { }
 
   ngOnInit(): void {
   }
