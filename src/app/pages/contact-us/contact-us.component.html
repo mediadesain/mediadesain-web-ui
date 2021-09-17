@@ -1,1 +1,59 @@
-<p>contact-us works!</p>
+<section>
+    <div class="container-sm">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15865.168267884172!2d106.878565!3d-6.2251682!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x29296160d2dbda46!2sBassura%20city%20tower%20F!5e0!3m2!1sen!2sid!4v1593618988306!5m2!1sen!2sid" height="300" frameborder="0" style="border:0;width:100%;" allowfullscreen=""></iframe>
+      <div class="row">
+        <div class="col-sm-8">
+          <form>
+            <div class="form-group mb-3">
+              <label>Nama</label>
+              <input type="text" class="form-control" placeholder="John Doe" name="name" ngModel required>
+            </div>
+            <div class="row mb-3">
+              <div class="form-group col-md-6">
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="Email" name="email" ngModel required>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Phone Number <small class="text-muted">(Optional)</small></label>
+                <input type="text" class="form-control" placeholder="Phone Number" name="phone" ngModel>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label>Company <small class="text-muted">(Optional)</small></label>
+              <input type="text" class="form-control" placeholder="TJ Group" name="company" ngModel>
+            </div>
+            <div class="form-group mb-3">
+              <label>Subjek</label>
+              <select class="form-control" name="subject" ngModel required>
+                <option>Pertanyaan Umum</option>
+                <option>Kritik & Saran</option>
+              </select>
+            </div>
+            <div class="form-group mb-3">
+              <label>Pesan</label>
+              <textarea class="form-control" style="height:200px" name="message" ngModel required></textarea>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <p class="text-center"><i class="fas fa-circle-notch fa-spin"></i> Silahkan Tunggu</p>
+          </form>
+        </div>
+        <div class="col-sm-4">
+          <ul class="fa-ul custom-list">
+              <li><span style="font-size:20px;">
+                  <i class="fa-li fa fa-map-marker"></i>Address</span><br>
+                  <b>Appartement Bassura City - Tower F</b><br>
+                  jl. Jend. Basuki Rachmat No.1A,<br>
+                  Kecamatan Jatinegara, Kota Jakarta Timur,<br>
+                  DKI Jakarta 13410
+              </li>
+              <li><span style="font-size:20px;"><i class="fa-li far fa-envelope"></i>Mail</span><br><a href="mailto:mediagofresh@gmail.com">mediagofresh@gmail.com</a></li>
+              <li><span style="font-size:20px;"><i class="fa-li fab fa-whatsapp"></i>WhatsApp</span><br>
+              <a href="https://wa.me/6285882844395">+6285882844395</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </section>
