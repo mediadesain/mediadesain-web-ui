@@ -1,5 +1,175 @@
-<section>
-    <div class="container">
-        [Project Saya]
+
+<section class="container">
+    [Project Saya]
+    Responsive Table
+    <div class="row">
+        <div class="col-6 col-sm-4">
+            <div class="card mb-4">
+            <div class="card-body">
+                <p class="card-text">Draft/Review</p>
+                <h5 class="card-title ng-binding">1 pesan</h5>
+            </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-4">
+            <div class="card mb-4">
+            <div class="card-body">
+                <p class="card-text">Published</p>
+                <h5 class="card-title ng-binding">1 pesan</h5>
+            </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-4">
+            <div class="card mb-4">
+            <div class="card-body">
+                <p class="card-text">Total Projekan</p>
+                <h5 class="card-title ng-binding">3 Projek</h5>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-3">
+            [Filter]
+        </div>
+        <div class="col-12 col-sm-9">
+            <table class="table">
+                <thead class="table-light">
+                <tr>
+                    <th>Judul Projek</th>
+                    <th>Diposting Oleh</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of [0,1,2,3,4,5]">
+                        <td mds-th-title="Judul Project">Alfreds Futterkiste</td>
+                        <td mds-th-title="Diposting Oleh">
+                            <small>
+                                Alfreds Futterkiste<br/>
+                                alfreds@mail.com<br/>
+                                08512345678<br/>
+                            </small>
+                        </td>
+                        <td mds-th-title="Status">Published</td>
+                        <td>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#projectModal"><i class="fas fa-pencil-alt"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
+
+
+<div class="modal fade" id="projectModal">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <form class="modal-content" #projectForm="ngForm" (ngSubmit)="submitProject(detail)">
+      <div class="modal-header">
+        <h3 class="modal-title text-center text-primary">
+          Pengaturan Projek
+        </h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning">
+            <p class="mb-1">Alasan Ditolak</p>
+            <i><small>Gambar tidak sesui dengan projek</small></i>
+        </div>
+        <pre style="max-height: 100px;overflow: scroll;">{{detail|json}}</pre>
+        <div class="row">
+            <div class="col-12 col-sm-7">
+                <div class="form-group mb-4">
+                    <label>Judul</label>
+                    <input type="text" class="form-control" [ngClass]="{'is-invalid': posttitle.dirty && posttitle.errors?.required}" type="text" placeholder="Jasa edit video" [(ngModel)]="detail.posttitle" name="posttitle" #posttitle="ngModel" required/>
+                    <div class="invalid-feedback" *ngIf="posttitle.errors?.required && posttitle.dirty">
+                        <small><i>Masukan judul Projek</i></small>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Deskripsi</label>
+                    <textarea style="height: 200px" class="form-control" [ngClass]="{'is-invalid': postcontent.dirty && postcontent.errors?.required}" type="text" placeholder="Jasa edit video" [(ngModel)]="detail.postcontent" name="postcontent" #postcontent="ngModel" required></textarea>
+                    <div class="invalid-feedback" *ngIf="postcontent.errors?.required && postcontent.dirty">
+                        <small><i>Masukan deskripsi projek</i></small>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Kategori</label>
+                    <div *ngFor="let item of ['photographer','designer','software developer','illustator'];let i = index">
+                        <input [id]="'slc'+i"
+                            type="checkbox"
+                            [value]="item"
+                            [checked]="detail.category.indexOf(item) > -1"
+                            (change)="selectBox(detail.category, item)"
+                        />
+                        <label [for]="'slc'+i">&nbsp; {{item|titlecase}}</label>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Type projek</label>
+                    <select class="form-control" [ngClass]="{'is-invalid': type.dirty && type.errors?.required}" [(ngModel)]="detail.type" name="type" #type="ngModel" required>
+                        <option value="freelance">Freelance</option>
+                        <option value="full time">Fulltime</option>
+                        <option value="remote">Remote</option>
+                    </select>
+                    <div class="invalid-feedback" *ngIf="type.errors?.required && type.dirty">
+                        <small><i>Pilih type projek</i></small>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="form-group col-4">
+                        <label>Tampilkan Salary/Tarif?</label>
+                        <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" style="transform: scale(1.3);margin-top: 10px;margin-left: -30px" [(ngModel)]="detail.isShowprice" name="isShowprice">
+                        </div>
+                    </div>
+                    <div class="form-group col-4" [hidden]="!detail.isShowprice">
+                        <label>Dari</label>
+                        <input type="number" placeholder="100000" class="form-control" [(ngModel)]="detail.pricelow" name="pricelow"/>
+                    </div>
+                    <div class="form-group col-4" [hidden]="!detail.isShowprice">
+                        <label>Hingga</label>
+                        <input type="number" placeholder="500000" class="form-control" [(ngModel)]="detail.pricehight" name="pricehight"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-5">
+                <div class="form-group mb-4">
+                    <label>Thumbnail</label>
+                    <div class="mds-img-loader landscape"></div>
+                </div>
+                <div class="card card-body">
+                    <h4 class="mb-4">Reviewer Section</h4>
+                    <div class="form-group mb-4">
+                        <label>Update Status</label>
+                        <select class="form-control" [ngClass]="{'is-invalid': status.dirty && status.errors?.required}" [(ngModel)]="detail.status" name="status" #status="ngModel" required>
+                            <option value="review">Dalam pertinjauan</option>
+                            <option value="rejected">Ditolak</option>
+                            <option value="published">Terbitkan</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="status.errors?.required && status.dirty">
+                            <small><i>Pilih status</i></small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4" *ngIf="detail.status=='rejected'">
+                        <label>Alsan</label>
+                        <textarea style="height: 200px" class="form-control" [ngClass]="{'is-invalid': status_message.dirty && status_message.errors?.required}" type="text" placeholder="Gambar tidak sesui dan mengandung unsur kata sara, pornografi" [(ngModel)]="detail.status_message" name="status_message" #status_message="ngModel" required></textarea>
+                        <div class="invalid-feedback" *ngIf="status_message.errors?.required && status_message.dirty">
+                            <small><i>Masukan deskripsi projek</i></small>
+                        </div>
+                    </div>
+               </div>
+                
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!projectForm.form.valid">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+  
