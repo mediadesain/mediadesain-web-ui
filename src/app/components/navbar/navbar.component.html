@@ -8,19 +8,25 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
         <ul class="navbar-nav">
-          <li class="nav-item"><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link" [routerLink]="'/'">Home</a></li>
-          <li class="nav-item"><a routerLinkActive="active" class="nav-link" [routerLink]="'/kelas'">Kelas</a></li>
-          <li class="nav-item"><a routerLinkActive="active" class="nav-link" [routerLink]="'/projek'">Projek</a></li>
-          <li class="nav-item"><a routerLinkActive="active" class="nav-link" [routerLink]="'/kolaborasi'">Kolaborasi</a></li>
-          
+          <ng-container *ngIf="isPublic">
+            <li class="nav-item"><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link" [routerLink]="'/'">Home</a></li>
+            <li class="nav-item"><a routerLinkActive="active" class="nav-link" [routerLink]="'/kelas'">Kelas</a></li>
+            <li class="nav-item"><a routerLinkActive="active" class="nav-link" [routerLink]="'/projek'">Projek</a></li>
+            <li class="nav-item"><a routerLinkActive="active" class="nav-link" [routerLink]="'/kolaborasi'">Kolaborasi</a></li>
+          </ng-container>
+
+          <ng-container *ngIf="!isPublic">
+            <li class="nav-item"><a routerLinkActive="active" class="nav-link" [routerLink]="'/admin'">Dashboard</a></li>
+          </ng-container>
+
           <li class="nav-item">
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Masuk</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" data-bs-toggle="dropdown">Akun Saya</a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" [routerLink]="'/akun-saya'">Edit Profile</a></li>
-              <li><a class="dropdown-item" [routerLink]="'/akun-saya/projek'">Projek Saya <span class="badge bg-danger">3</span></a></li>
+              <li><a class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="'/akun-saya'">Edit Profile</a></li>
+              <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="'/akun-saya/projek'">Projek Saya <span class="badge bg-danger">3</span></a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Logout</a></li>
             </ul>

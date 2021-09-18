@@ -2,7 +2,11 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 [hidden]="activePage==0" class="mb-0" style="width: 25px;" (click)="activePage=0"><i class="fas fa-chevron-left"></i></h3>
+          <h3 [hidden]="activePage==0" (click)="activePage=0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16" style="transform: scale(1.6);color: #808080;margin: 5px 10px 0 0;">
+              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+            </svg>
+          </h3>
           <h3 class="modal-title text-center text-primary">
             <span [hidden]="activePage!=0">Masuk</span>
             <span [hidden]="activePage!=1">Lupa Password</span>
