@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'hubungi-kami', loadChildren: () => import('./pages/contact-us/contact-us.module').then(m => m.ContactUsModule), data: {title: 'Mediadesain - Hubungi Kami'} },
   { path: 'dukung-kami', loadChildren: () => import('./pages/support-us/support-us.module').then(m => m.SupportUsModule), data: {title: 'Mediadesain - Dukung Kami'}  },
   { path: 'offline', component: OfflineMessageComponent, data: {title: 'Mediadesain - Dukung Kami'}  },
+  { path: 'admin', loadChildren: () => import('./pages/admin/dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
 
 @NgModule({
