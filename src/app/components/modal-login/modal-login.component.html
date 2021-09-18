@@ -2,6 +2,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
+          <h3 [hidden]="activePage==0" class="mb-0" style="width: 25px;" (click)="activePage=0"><i class="fas fa-chevron-left"></i></h3>
           <h3 class="modal-title text-center text-primary">
             <span [hidden]="activePage!=0">Masuk</span>
             <span [hidden]="activePage!=1">Lupa Password</span>
