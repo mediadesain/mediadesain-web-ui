@@ -1,0 +1,8 @@
+<section>
+    <div class="container">
+        <p *ngIf="!connectionSrvc.isConnected">
+        <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" style="width: 13px"/> Connecting ...
+        </p>
+        <a *ngIf="connectionSrvc.isConnected" href="javascript:void(0)" (click)="location.back()">Back</a>
+    </div>
+</section>

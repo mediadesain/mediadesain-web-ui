@@ -7,13 +7,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
+import { OfflineMessageComponent } from './components/offline-message/offline-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    ModalLoginComponent
+    ModalLoginComponent,
+    OfflineMessageComponent
   ],
   imports: [
     BrowserModule,
