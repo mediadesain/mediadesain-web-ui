@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-my-project',
-  templateUrl: './my-project.component.html',
-  styleUrls: ['./my-project.component.scss']
+  selector: 'app-project-management',
+  templateUrl: './project-management.component.html',
+  styleUrls: ['./project-management.component.scss']
 })
-export class MyProjectComponent implements OnInit {
+export class ProjectManagementComponent implements OnInit {
   detail = {
     category: ['apple','orange'],
     posttitle: '',

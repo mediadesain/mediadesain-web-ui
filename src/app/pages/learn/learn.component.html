@@ -31,7 +31,9 @@
           <div class="card">
             <div class="mds-img-loader landscape"><img src="#"/></div>
             <div class="card-body">
-              <a href="#" class="stretched-link"><p class="card-text">Judul Content Yang Menarik & Termantap ke 1</p></a>
+              <a class="stretched-link" [routerLink]="'/kelas/'+'slug-untuk-kelas'" [state]="{name:'aisyah'}">
+                <p class="card-text">Judul Content Yang Menarik & Termantap ke 1</p>
+              </a>
               <div class="d-flex justify-content-between mt-2">
                 <small class="text-muted">Total Material 5</small>
                 <span class="badge bg-primary">Freemium</span>

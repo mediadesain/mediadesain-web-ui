@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
     this.router.events.pipe(
       filter( e => e instanceof NavigationEnd)
     ).subscribe( (navEnd: NavigationEnd) => {
-      this.isPublic = navEnd.urlAfterRedirects === '/admin' ? false : true;
+      this.isPublic = navEnd.urlAfterRedirects.includes('/admin') ? false : true;
     })
   }
 

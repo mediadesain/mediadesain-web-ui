@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { LearnRoutingModule } from './learn-routing.module';
 import { LearnComponent } from './learn.component';
+import { LearnDetailComponent } from './learn-detail/learn-detail.component';
 
 
 @NgModule({
   declarations: [
-    LearnComponent
+    LearnComponent,
+    LearnDetailComponent
   ],
   imports: [
     CommonModule,

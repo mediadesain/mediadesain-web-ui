@@ -4,6 +4,7 @@ import { OfflineMessageComponent } from './components/offline-message/offline-me
 import { HomeModule } from './pages/home/home.module';
 
 const routes: Routes = [
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule), data: {title: 'Mediadesain - Home'} },
   { path: 'kelas', loadChildren: () => import('./pages/learn/learn.module').then(m => m.LearnModule), data: {title: 'Mediadesain - Kelas'} },
   { path: 'kolaborasi', loadChildren: () => import('./pages/collaborator/collaborator.module').then(m => m.CollaboratorModule), data: {title: 'Mediadesain - Kolaborasi'} },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'dukung-kami', loadChildren: () => import('./pages/support-us/support-us.module').then(m => m.SupportUsModule), data: {title: 'Mediadesain - Dukung Kami'}  },
   { path: 'offline', component: OfflineMessageComponent, data: {title: 'Mediadesain - Dukung Kami'}  },
   { path: 'admin', loadChildren: () => import('./pages/admin/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: '**', component: OfflineMessageComponent }
 ];
 
 @NgModule({
