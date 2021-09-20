@@ -7,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalLoginComponent implements OnInit {
   activePage = 0;
+  selected = ['freelancer']
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+  
+  selectBox(target: string[], val: string) {
+    var idx = target.indexOf(val);
+    if (idx > -1) target.splice(idx, 1);
+    else target.push(val);
   }
 
   login(data: any, target: string) {

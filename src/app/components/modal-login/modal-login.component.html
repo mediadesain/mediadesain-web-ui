@@ -50,18 +50,27 @@
           <!-- Register -->
           <form [hidden]="activePage!=2" #registerForm="ngForm" (ngSubmit)="register(registerForm.value, '/profile')">
             <div class="form-group mb-4">
-              <!-- <div class="form-check form-check-inline" *ngFor="let a of ['freelancer','tutor'];let i = index">
-                <input class="form-check-input" type="checkbox" value="" [id]="'flexCheckChecked'+i" name="_role" #role="ngModel" ngModel>
-                <label class="form-check-label" [for]="'flexCheckChecked'+i">Checked checkbox</label>
-              </div> -->
+              <label>Daftar Sebagai</label>
+              <div *ngFor="let item of ['freelancer','tutor'];let i = index">
+                  <input
+                    [id]="'selectrole'+i"
+                    type="checkbox"
+                    [value]="item"
+                    [checked]="selected.indexOf(item) > -1"
+                    (change)="selectBox(selected, item)"
+                  />
+                  <label [for]="'selectrole'+i">&nbsp; {{item|titlecase}}</label>
+              </div>
+              <input type="text" [(ngModel)]="selected" name="_role">
+              {{selected|json}}
             </div>
-            <div class="form-group mb-4">
+            <!-- <div class="form-group mb-4">
               <label>Daftar Sebagai</label>
               <input type="text" class="form-control" [ngClass]="{'is-invalid': role.dirty && role.errors?.required}" name="_role" #role="ngModel" ngModel required/>
               <div class="invalid-feedback" *ngIf="role.errors?.required && role.dirty">
                 <small><i>Pilih minimal 1</i></small>
               </div>
-            </div>
+            </div> -->
             <div class="form-group mb-4">
               <label>Kategori Keahlian</label>
               <select class="form-control" [ngClass]="{'is-invalid': skill.dirty && skill.errors?.required}" name="skill" #skill="ngModel" ngModel required>
