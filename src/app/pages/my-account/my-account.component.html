@@ -1,5 +1,124 @@
 <section>
     <div class="container">
-        [Form]
+        <form #profileForm="ngForm" (ngSubmit)="register(profileForm.value)">
+            <div class="row">
+                <div class="col-12 col-sm-7">
+                    <h3>Profile Detail</h3>
+                    <input [hidden]="true" type="text" [(ngModel)]="data.iduser" name="iduser"/>
+                    <input [hidden]="true" type="text" [(ngModel)]="data.uid" name="uid"/>
+                    <div class="form-group mb-4">
+                        <label>UserId</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="jhon" [ngClass]="{'is-invalid': userid.dirty && userid.errors?.required}"  [(ngModel)]="data.userid" name="userid" #userid="ngModel" required>
+                            <button class="btn btn-primary" type="button">Check</button>
+                        </div>
+                        <small class="text-muted">Link: <a [href]="'https://www.mediadesain.com/user/@'+data.userid">www.mediadesain.com/user/@{{data.userid}}</a></small><br>
+                        <small class="text-danger">Silahkan cari username lain</small>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="form-group col-7">
+                          <label>Nama Lengkap</label>
+                          <input type="text" placeholder="Kopi Jhon" class="form-control" [ngClass]="{'is-invalid': fullname.dirty && fullname.errors?.required}" [(ngModel)]="data.fullname" name="fullname" #fullname="ngModel" required/>
+                          <div class="invalid-feedback" *ngIf="fullname.errors?.required && fullname.dirty">
+                            <small><i>Masukan nama anda</i></small>
+                          </div>
+                        </div>
+                        <div class="form-group col-5">
+                          <label>Jenis Kelamin</label>
+                          <select class="form-control" [ngClass]="{'is-invalid': gender.dirty && gender.errors?.required}" [(ngModel)]="data.gender" name="gender" #gender="ngModel" required>
+                            <option *ngFor="let gender of ['pria','wanita']" [value]="gender">{{gender|titlecase}}</option>
+                          </select>
+                          <div class="invalid-feedback" *ngIf="gender.errors?.required && gender.dirty">
+                            <small><i>Mohon pilih jenis kelamin anda</i></small>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Bio</label>
+                        <textarea style="height:100px" class="form-control" [(ngModel)]="data.bio" name="bio" #bio="ngModel"></textarea>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Kategori Keahlian</label>
+                        <select class="form-control" [ngClass]="{'is-invalid': skill.dirty && skill.errors?.required}" [(ngModel)]="data.skill" name="skill" #skill="ngModel" required>
+                          <option value="software developer">Software Developer</option>
+                          <option>Designer</option>
+                          <option>Photographer</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="skill.errors?.required && skill.dirty">
+                          <small><i>Pilih main skill kamu</i></small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Spesifik</label>
+                        <input type="text" placeholder="Desain Grafis, Desain UX/UI" class="form-control" [(ngModel)]="data.skills" name="skills"/>
+                    </div>
+                    <div class="form-group mb-5">
+                        <label>Software & Peralatan</label>
+                        <input type="text" placeholder="Adobe Photoshop, Adobe illustator" class="form-control" [(ngModel)]="data.software" name="software"/>
+                    </div>
+                    <h3>Kontak</h3>
+                    <div class="form-group mb-4">
+                        <label>Email</label>
+                        <input type="email" placeholder="john@mail.com" class="form-control" [(ngModel)]="data.email" name="email" disabled/>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="form-group" [ngClass]="!data.phoneno?'col-12':'col-7'">
+                            <label>No HP <small>(Optional)</small></label>
+                            <input type="number" placeholder="08512345678" class="form-control" [(ngModel)]="data.phoneno" name="phono"/>
+                        </div>
+                        <div class="form-group col-5" [hidden]="!data.phoneno">
+                            <label>Tampilkan?</label>
+                            <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" style="transform: scale(1.3);margin-top: 10px;" [(ngModel)]="data.phonenoshow" name="phonenoshow">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label>Kota</label>
+                        <select class="form-control" [ngClass]="{'is-invalid': city.dirty && city.errors?.required}" [(ngModel)]="data.city" name="city" #city="ngModel" required>
+                            <option></option>
+                            <option>kota jakarta timur</option>
+                            <option>kota bandung</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="city.errors?.required && city.dirty">
+                            <small><i>Mohon pilih domisili kamu berada</i></small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-5">
+                        <label>Alamat Lengkap</label>
+                        <textarea style="height:100px" class="form-control" [(ngModel)]="data.address" name="address"></textarea>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-5">
+                    <h3>Layanan</h3>
+                    <div class="form-group mb-4">
+                        <label>Kamu Sebagai</label>
+                        <div *ngFor="let item of ['freelancer','tutor'];let i = index">
+                            <input
+                              [id]="'selectrole'+i"
+                              type="checkbox"
+                              [value]="item"
+                              [checked]="data._role.indexOf(item) > -1"
+                              (change)="selectBox(data._role, item)"
+                            />
+                            <label [for]="'selectrole'+i">&nbsp; {{item|titlecase}}</label>
+                        </div>
+                        <input type="text" [hidden]="true" class="is-invalid" [(ngModel)]="data._role" name="_role" required>
+                        <div class="invalid-feedback" *ngIf="data._role.length === 0">
+                            <small><i>Pilih minimal 1</i></small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-5">
+                        <label>Tarif Private/Jam</label>
+                        <input type="number" placeholder="120000" class="form-control" />
+                    </div>
+                    <h3>Link</h3>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <a class="btn btn-default" href="javascript:void(0)">Reset Password</a>
+                <button type="submot" class="btn btn-primary" href="javascript:void(0)" [disabled]="!profileForm.form.valid || data._role.length === 0">Update</button>
+            </div>
+        </form>
     </div>
 </section>
