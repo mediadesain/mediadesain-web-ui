@@ -61,16 +61,11 @@
                   />
                   <label [for]="'selectrole'+i">&nbsp; {{item|titlecase}}</label>
               </div>
-              <input type="text" [(ngModel)]="selected" name="_role">
-              {{selected|json}}
-            </div>
-            <!-- <div class="form-group mb-4">
-              <label>Daftar Sebagai</label>
-              <input type="text" class="form-control" [ngClass]="{'is-invalid': role.dirty && role.errors?.required}" name="_role" #role="ngModel" ngModel required/>
-              <div class="invalid-feedback" *ngIf="role.errors?.required && role.dirty">
+              <input type="text" [hidden]="true" class="is-invalid" [(ngModel)]="selected" name="_role">
+              <div class="invalid-feedback" *ngIf="selected.length === 0">
                 <small><i>Pilih minimal 1</i></small>
               </div>
-            </div> -->
+            </div>
             <div class="form-group mb-4">
               <label>Kategori Keahlian</label>
               <select class="form-control" [ngClass]="{'is-invalid': skill.dirty && skill.errors?.required}" name="skill" #skill="ngModel" ngModel required>
@@ -112,14 +107,14 @@
               </div>
             </div>
             <div class="row mb-4">
-              <div class="form-group col-7">
+              <div class="form-group" [ngClass]="!phone.value?'col-12':'col-7'">
                 <label>No HP <small>(Optional)</small></label>
-                <input type="number" placeholder="08512345678" class="form-control" name="phono" ngModel/>
+                <input type="number" placeholder="08512345678" class="form-control" name="phono" ngModel #phone="ngModel"/>
               </div>
-              <div class="form-group col-5">
+              <div class="form-group col-5" [hidden]="!phone.value">
                 <label>Tampilkan?</label>
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" style="transform: scale(1.3);margin-top: 10px;" name="phonenoshow" ngModel>
+                  <input class="form-check-input" type="checkbox" style="transform: scale(1.3);margin-top: 10px;" name="phonenoshow" [ngModel]="false">
                 </div>
               </div>
             </div>
@@ -139,7 +134,7 @@
             </div>
             
             <div class="d-grid mb-3 mb-3">
-              <button type="submit" class="btn btn-primary" [disabled]="!registerForm.form.valid">Daftar</button>
+              <button type="submit" class="btn btn-primary" [disabled]="!registerForm.form.valid || selected.length === 0">Daftar</button>
               <button type="button" class="btn btn-default" (click)="activePage=0">Kembali</button>
             </div>
           </form>
