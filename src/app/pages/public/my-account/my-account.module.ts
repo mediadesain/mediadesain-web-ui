@@ -5,6 +5,7 @@ import { MyAccountRoutingModule } from './my-account-routing.module';
 import { MyAccountComponent } from './my-account.component';
 import { ProjectManagementComponent } from '../../../components/project-management/project-management.component';
 import { FormsModule } from '@angular/forms';
+import { ImageCropperModule } from 'ngx-image-cropper';
 @NgModule({
   declarations: [
     MyAccountComponent,
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MyAccountRoutingModule,
-    FormsModule
+    FormsModule,
+    ImageCropperModule
   ]
 })
 export class MyAccountModule { }

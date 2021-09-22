@@ -2,6 +2,40 @@
     <div class="container">
         <form #profileForm="ngForm" (ngSubmit)="register(profileForm.value)">
             <div class="row">
+                <div class="col-12">
+                    <div [style.visibility]="!isShowCropper? 'hidden':'visible'">
+                        <image-cropper
+                            [imageChangedEvent]="imageChangedEvent"
+                            [maintainAspectRatio]="true"
+                            [resizeToWidth]="500"
+                            [aspectRatio]="1 / 1"
+                            format="jpeg"
+                            (imageLoaded)="imageLoaded()"
+                            (imageCropped)="imageCropped($event)"
+                            (cropperReady)="cropperReady()"
+                            (loadImageFailed)="loadImageFailed()"
+                        ></image-cropper>
+                    </div>
+                      
+                    <ng-container *ngIf="isShowCropper">
+                        <div class="d-flex justify-content-between mb-3">
+                            <a class="btn btn-default" (click)="cancel()">Batal</a>
+                            <a class="btn btn-primary" (click)="selectCrop()">Pilih</a>
+                        </div>
+                        <small class="text-danger">Crop gambar sesui kebutuhan</small>
+                        <br/>
+                    </ng-container>
+
+                    <input id="file-upload" type="file" style="display: none;" (change)="fileChangeEvent($event)"/>
+                    <div style="max-width: 150px;margin: 0 auto">
+                        <div class="mds-img-loader circle">
+                            <label for="file-upload" style=" position: absolute; width: 100%; height: 100%;cursor: pointer;">
+                                <img *ngIf="data" [src]="data._avatar" onError="this.src='../../../../assets/images/placeholder/profile.jpg'"/>
+                                <div style="position: absolute;z-index: 2;background: rgb(0 0 0 / 90%);color: #fff;width: 100%;bottom: 0;font-size: 10px;padding: 3px;text-align: center;">EDIT</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-12 col-sm-7">
                     <h3>Profile Detail</h3>
                     <input [hidden]="true" type="text" [(ngModel)]="data.iduser" name="iduser"/>
@@ -117,7 +151,7 @@
             </div>
             <div class="d-flex justify-content-between mb-3">
                 <a class="btn btn-default" href="javascript:void(0)">Reset Password</a>
-                <button type="submot" class="btn btn-primary" href="javascript:void(0)" [disabled]="!profileForm.form.valid || data._role.length === 0">Update</button>
+                <button type="submit" class="btn btn-primary" href="javascript:void(0)" [disabled]="!profileForm.form.valid || data._role.length === 0">Update</button>
             </div>
         </form>
     </div>

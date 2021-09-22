@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-my-account',
@@ -51,11 +52,36 @@ export class MyAccountComponent implements OnInit {
     "software" : "Adobe Master, HTML, CSS, JavaSript, Angular",
     "uid" : "8jpSYFAeQcTcCDtFYKNAcW9pA3j2",
     "userid" : "johndoe",
+    "_avatar" : "https://firebasestorage.googleapis.com/v0/b/media-desain.appspot.com/o/users%2FUSR8JPSY1589079600000.jpeg?alt=media&token=24851444-73f1-4137-896c-1047fdbc85cf",
     "_role" : ["freelancer","tutor"]
   }
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  isShowCropper: boolean = false;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+
+  fileChangeEvent(event: any): void {this.imageChangedEvent = event}
+  imageCropped(event: ImageCroppedEvent) {
+    this.isShowCropper = true;
+    this.croppedImage = event.base64;
+  }
+  imageLoaded() {}
+  cropperReady() {console.log('ready')}
+  loadImageFailed() {console.log('filed')}
+
+  cancel() {
+    this.isShowCropper = false;
+    this.imageChangedEvent = '';
+    this.croppedImage = '';
+  }
+  selectCrop() {
+    this.isShowCropper = false;
+    this.imageChangedEvent = '';
+    this.data._avatar = this.croppedImage;
   }
 
   selectBox(target: string[], val: string) {
