@@ -5,3 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## About
 
 Re build [mediadesain.com](mediadesain.com) from AngularJs to Angular 2+. Shareble for UI Mockup only but not for the functionality
+
+#### Built With
+- Angular
+
+#### Plugins & Dependencies:
+- [ngx-image-cropper](https://www.npmjs.com/package/ngx-image-cropper)
