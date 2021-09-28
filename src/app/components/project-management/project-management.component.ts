@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import Swal from 'sweetalert2/dist/sweetalert2';
 @Component({
   selector: 'app-project-management',
   templateUrl: './project-management.component.html',
@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectManagementComponent implements OnInit {
   detail = {
     category: ['apple','orange'],
-    posttitle: '',
-    postcontent: '',
-    type: '',
+    posttitle: 'title project',
+    postcontent: 'this is description of your project',
+    type: 'freelance',
     isShowprice: false,
     pricelow: 0,
     pricehight: 1,
@@ -27,6 +27,19 @@ export class ProjectManagementComponent implements OnInit {
     var idx = target.indexOf(val);
     if (idx > -1) target.splice(idx, 1);
     else target.push(val);
+  }
+
+  deleteProject(){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('delete')
+      }
+    })
   }
 
   submitProject(value: any) {

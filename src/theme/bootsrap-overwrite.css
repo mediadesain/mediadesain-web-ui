@@ -60,3 +60,8 @@ select.form-control { background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0i
     td {border: none; border-bottom: 1px solid #eee; position: relative; white-space: normal; text-align:left}
     td:before {content: attr(mds-th-title); font-weight: bold; width: 100%; display: flex}
 }
+
+/*--SwallAlert Overwrite--*/
+.swal2-actions .swal2-styled {border-radius: 25px;padding: .625em 2em}
+.swal2-styled.swal2-confirm {background-color: var(--color-primary)}
+.swal2-styled.swal2-confirm:focus {box-shadow: unset;}

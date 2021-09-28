@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
+import Swal from 'sweetalert2/dist/sweetalert2';
 
 @Component({
   selector: 'app-my-account',
@@ -92,6 +93,15 @@ export class MyAccountComponent implements OnInit {
 
   register(value: any) {
     console.log(value)
+    this.simpleAlert()
+  }
+
+  simpleAlert(){  
+    Swal.fire({
+      title: 'Berhasil',
+      text: 'Data telah berhasil diperbaharui',
+      icon: 'success'
+    })
   }
 
 }
