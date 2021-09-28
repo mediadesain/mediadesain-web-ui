@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2/dist/sweetalert2';
+import { SweetAlertOptions } from 'sweetalert2';
 @Component({
   selector: 'app-project-management',
   templateUrl: './project-management.component.html',
@@ -30,12 +31,13 @@ export class ProjectManagementComponent implements OnInit {
   }
 
   deleteProject(){
-    Swal.fire({
+    let setting: SweetAlertOptions = {
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true
-    }).then((result) => {
+    }
+    Swal.fire(setting).then((result) => {
       if (result.isConfirmed) {
         console.log('delete')
       }
