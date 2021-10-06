@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OfflineMessageComponent } from './components/offline-message/offline-message.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CareerComponent } from './pages/public/career/career.component';
 import { HomeModule } from './pages/public/home/home.module';
 
 const routes: Routes = [
@@ -15,8 +17,9 @@ const routes: Routes = [
   { path: 'hubungi-kami', loadChildren: () => import('./pages/public/contact-us/contact-us.module').then(m => m.ContactUsModule), data: {title: 'Mediadesain - Hubungi Kami'} },
   { path: 'dukung-kami', loadChildren: () => import('./pages/public/support-us/support-us.module').then(m => m.SupportUsModule), data: {title: 'Mediadesain - Dukung Kami'}  },
   { path: 'offline', component: OfflineMessageComponent, data: {title: 'Mediadesain - Dukung Kami'}  },
+  { path: 'karir', component: CareerComponent, data: {title: 'Mediadesain - Karir'}  },
   { path: 'admin', loadChildren: () => import('./pages/admin/dashboard/dashboard.module').then(m => m.DashboardModule) },
-  { path: '**', component: OfflineMessageComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

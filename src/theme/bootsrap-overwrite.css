@@ -1,3 +1,6 @@
+
+app-page-not-found, app-career {margin-top: auto !important}
+
 :root {
     --color-primary: #8bc53f;
     --color-primary-dark: #7aad37;
@@ -5,7 +8,6 @@
 body {font-family: 'Open Sans', sans-serif; line-height: 1.6; margin: 0; color: #666;background: #f9f9f9}
 a {color:var(--color-primary);text-decoration: none}
 a:hover {color:var(--color-primary-dark);text-decoration: none}
-
 .text-primary {color:var(--color-primary) !important}
 .bg-primary {background-color: var(--color-primary) !important}
 
