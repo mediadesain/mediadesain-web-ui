@@ -1,8 +1,11 @@
 <section>
-    <div class="container">
+    <div class="container text-center">
         <p *ngIf="!connectionSrvc.isConnected">
-        <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" style="width: 13px"/> Connecting ...
+            <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" style="width: 13px"/> Tidak Ada Koneksi ...
         </p>
-        <a *ngIf="connectionSrvc.isConnected" href="javascript:void(0)" (click)="location.back()">Back</a>
+        <p *ngIf="connectionSrvc.isConnected">
+            Terkoneksi kembali ke Internet
+        </p>
+        <a *ngIf="connectionSrvc.isConnected" class="btn btn-primary" href="javascript:void(0)" (click)="location.back()">Kembali</a>
     </div>
 </section>

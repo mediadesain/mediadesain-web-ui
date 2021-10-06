@@ -1,5 +1,5 @@
 
-app-page-not-found, app-career {margin-top: auto !important}
+app-page-not-found, app-career, app-offline-message {margin-top: auto !important}
 
 :root {
     --color-primary: #8bc53f;
