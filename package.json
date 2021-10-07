@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.2.11",
     "@angular/platform-browser-dynamic": "~11.2.11",
     "@angular/router": "~11.2.11",
+    "firebase": "^8.4.2",
     "ngx-image-cropper": "^4.0.1",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.1.7",

@@ -12,3 +12,4 @@ Re build [mediadesain.com](mediadesain.com) from AngularJs to Angular 2+. Shareb
 #### Plugins & Dependencies:
 - [sweetalert2](https://www.npmjs.com/package/sweetalert2)
 - [ngx-image-cropper](https://www.npmjs.com/package/ngx-image-cropper)
+- [firebase](https://www.npmjs.com/package/firebase)
