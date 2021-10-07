@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./learn-detail.component.scss']
 })
 export class LearnDetailComponent implements OnInit {
-
+  activetab: string = 'description';
   constructor(
     private activeRoute: ActivatedRoute,
     private router: Router

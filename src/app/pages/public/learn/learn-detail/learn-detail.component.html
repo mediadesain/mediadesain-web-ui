@@ -2,9 +2,33 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8">
-                <p>learn-detail works!</p>
+                <video controls="" style="width: 100%;" src="https://firebasestorage.googleapis.com/v0/b/media-desain.appspot.com/o/classes%2FDGN1603753882000%2Fvideo-01.mp4?alt=media&amp;token=57c301c5-4246-484b-ba7e-06b98d8119d8"></video>
+                <br/><br/>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link" [ngClass]="{'active':activetab==='description'}" (click)="activetab='description'">Deskripsi</a></li>
+                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link" [ngClass]="{'active':activetab==='materials'}" (click)="activetab='materials'">Material</a></li>
+                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link" [ngClass]="{'active':activetab==='sourcefiles'}" (click)="activetab='sourcefiles'">Source File</a></li>
+                </ul>
+                <br/>
+                <ng-container *ngIf="activetab==='description'">
+                    <h3>Desain Grafis Hack ini mempermudah kerjaan desainer</h3>
+                    <p>Kelas kali ini sangat berguna sekali untuk mempermudah pekerjaan desainer. Mulai dari penggunaan software grafis seperti adobe photosop free dan remove background menjadi transparent secara instan.</p>
+                </ng-container>
+                <ng-container *ngIf="activetab==='materials'">
+                    <h3>Materials</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item active"><i class="fas fa-play-circle"></i> An active item</li>
+                        <li class="list-group-item"><i class="far fa-play-circle"></i> A second item</li>
+                        <li class="list-group-item"><i class="far fa-play-circle"></i> A third item</li>
+                        <li class="list-group-item"><i class="far fa-play-circle"></i> A fourth item</li>
+                        <li class="list-group-item"><i class="far fa-play-circle"></i> And a fifth one</li>
+                    </ul>
+                </ng-container>
+                <ng-container *ngIf="activetab==='sourcefiles'">
+                    <p>Source Files</p>
+                </ng-container>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 text-center">
                 [Space]
             </div>
         </div>
