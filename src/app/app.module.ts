@@ -14,6 +14,7 @@ import { ModalLoginComponent } from './components/modal-login/modal-login.compon
 import { OfflineMessageComponent } from './components/offline-message/offline-message.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CareerComponent } from './pages/public/career/career.component';
+import { StorageService } from './shared/services/firebase-storage.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { CareerComponent } from './pages/public/career/career.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

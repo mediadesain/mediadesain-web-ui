@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GetDataInterface } from 'src/app/shared/interfaces/database.interface';
-import { DatabaseService } from 'src/app/shared/services/database.service';
-import { StorageService } from 'src/app/shared/services/storage.service';
+import { DatabaseService } from 'src/app/shared/services/firebase-database.service';
+import { StorageService } from 'src/app/shared/services/firebase-storage.service';
 import { ClassInterface, MaterialInterface } from '../interfaces/class.interface';
 
 @Injectable({
@@ -25,6 +25,7 @@ export class ClassMaterialService {
     // Get all data and set initial partial items
     this.databaseSrvc.getDatabase({ isArray: true, url: '/v2/materials', query: true, key: 'idclass', value: id }).then(
       (materials: MaterialInterface[]) => {
+        console.log('zxczxc',materials)
         materials.sort( (a: any, b: any) => a.no - b.no );
         materials.forEach( (material: MaterialInterface) => {
           this.storageSrvc.fileUrl('/classes/' + id + '/' + material.video).then( (url: string) => {

@@ -25,18 +25,19 @@
       </div>
       <br/><br/>
 
-      <div class="alert alert-secondary text-center">Tidak ada kelas</div>
-      <div class="row">
-        <div class="col-sm-4 mb-4" *ngFor="let a of [0,1,2,3,4,5]">
+      <div *ngIf="classesSrvc.data.length === 0" class="alert alert-secondary text-center">Tidak ada kelas</div>
+      <div *ngIf="classesSrvc.data.length > 0" class="row">
+        <div class="col-sm-4 mb-4" *ngFor="let item of classesSrvc.alldata">
           <div class="card">
-            <div class="mds-img-loader landscape"><img src="#"/></div>
+            <div class="mds-img-loader landscape"><img *ngIf="item._thumbnail" [src]="item._thumbnail"/></div>
             <div class="card-body">
-              <a class="stretched-link" [routerLink]="'/kelas/'+'slug-untuk-kelas'" [state]="{name:'aisyah'}">
-                <p class="card-text">Judul Content Yang Menarik & Termantap ke 1</p>
+              <a class="stretched-link" [routerLink]="'/kelas/'+item.url" [state]="item" (click)="classesSrvc.detail = item">
+                <p class="card-text">{{item.title}}</p>
               </a>
               <div class="d-flex justify-content-between mt-2">
-                <small class="text-muted">Total Material 5</small>
-                <span class="badge bg-primary">Freemium</span>
+                <small class="text-muted">Total Material {{item._materialscount}}</small>
+                <span class="badge bg-primary" *ngIf="item.price === 0">Freemium</span>
+                <span class="badge bg-warning" *ngIf="item.price > 0">{{class.price}}</span>
               </div>
             </div>
           </div>

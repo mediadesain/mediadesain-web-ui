@@ -21,11 +21,7 @@ export class ClassesService {
     private databaseSrvc: DatabaseService,
     private storageSrvc: StorageService,
     public classMaterialSrcv: ClassMaterialService
-  ) {
-    if (this.alldata.length == 0){
-      this.getData()
-    }
-  }
+  ) {}
 
   getData(){
     // Get all data and set initial partial items
@@ -48,16 +44,17 @@ export class ClassesService {
     );
   }
 
-  getDataDetail(id: string){
+  getDataDetail(url: string){
     // Get Detail Item
-    const reference: GetDataInterface = { isArray: false, url: '/v2/classes/' + id, /*query: false, key: '', value: ''*/ };
+    const reference: GetDataInterface = { isArray: false, url: '/v2/classes/', query: true, key: 'url', value: url };
     this.databaseSrvc.getDatabase(reference).then(
       (detail: ClassInterface) => {
+        console.log('zxczxc',detail)
         this.detail = detail;
         this.storageSrvc.fileUrl('/classes/' + detail.idclass + '/' + detail.files.photos.split(',')[0]).then( (url: string) => {
           this.detail._thumbnail = url;
         });
-        this.classMaterialSrcv.getData(id)
+        this.classMaterialSrcv.getData(detail.idclass)
       }
     );
   }
