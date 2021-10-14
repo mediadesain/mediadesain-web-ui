@@ -18,10 +18,14 @@ export class ClassesService {
   }; // Partial item will show
   showperitem = 2; // Total items will show
   constructor(
-    private databaseSrvc: DatabaseService,
-    private storageSrvc: StorageService,
+    public databaseSrvc: DatabaseService,
+    public storageSrvc: StorageService,
     public classMaterialSrcv: ClassMaterialService
-  ) {}
+  ) {
+    if (this.alldata.length == 0){
+      this.getData()
+    }
+  }
 
   getData(){
     // Get all data and set initial partial items

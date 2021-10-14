@@ -7,12 +7,13 @@ import { ClassesService } from 'src/app/core/services/classes.service';
   styleUrls: ['./learn.component.scss']
 })
 export class LearnComponent implements OnInit {
+  
+  filterBy : string[] = ['category', '_level']
+  filterSelected = {}
 
   constructor(
     public classesSrvc: ClassesService
   ) {
-    this.classesSrvc.getData()
-    console.log(this.classesSrvc)
   }
 
   ngOnInit(): void {
