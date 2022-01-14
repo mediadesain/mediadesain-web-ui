@@ -21,15 +21,15 @@ export class ModalLoginComponent implements OnInit {
   }
 
   login(data: any, target: string) {
-    console.log(data, target)
+    alert(JSON.stringify(data)+' and route to '+target)
   }
 
   forgotPassword(value: {email: string}) {
-    console.log(value)
+    alert(JSON.stringify(value));
   }
 
   register(data: any, target: string) {
-    console.log(data, target)
+    alert(JSON.stringify(data)+' and route to '+target);
   }
 
 }

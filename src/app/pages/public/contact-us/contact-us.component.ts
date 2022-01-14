@@ -13,7 +13,7 @@ export class ContactUsComponent implements OnInit {
   }
 
   submit(value: any){
-    console.log(value)
+    alert(JSON.stringify(value));
   }
 
 }

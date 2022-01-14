@@ -16,7 +16,7 @@
         </div>
         <div class="modal-body">
           <!-- Login -->
-          <form [hidden]="activePage!=0" #loginForm="ngForm" (ngSubmit)="login(loginForm.value, '/app-menu/for-you')">
+          <form [hidden]="activePage!=0" #loginForm="ngForm" (ngSubmit)="login(loginForm.value, '/akun-saya')">
             <div class="form-group mb-3">
               <label>Email</label>
               <input type="email" class="form-control" name="email" ngModel required/>
@@ -48,7 +48,7 @@
           </form>
   
           <!-- Register -->
-          <form [hidden]="activePage!=2" #registerForm="ngForm" (ngSubmit)="register(registerForm.value, '/profile')">
+          <form [hidden]="activePage!=2" #registerForm="ngForm" (ngSubmit)="register(registerForm.value, '/akun-saya')">
             <div class="form-group mb-4">
               <label>Daftar Sebagai</label>
               <div *ngFor="let item of ['freelancer','tutor'];let i = index">
