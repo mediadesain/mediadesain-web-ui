@@ -11,12 +11,12 @@ export class DatabaseService {
   isloading: boolean = false;
   constructor(){
     // ----- DATA STREAMING -----
-    // firebase.database().ref('/product').on(
-    //   'value', (snapshoot) => {
-    //     this.data = Object.values(snapshoot.val())
-    //     console.log('data stream',this.data)
-    //   }
-    // )
+    firebase.database().ref('/product').on(
+      'value', (snapshoot) => {
+        this.data = Object.values(snapshoot.val())
+        console.log('data stream',this.data)
+      }
+    )
   }
 
   async getDatabase(parameter: GetDataInterface){
