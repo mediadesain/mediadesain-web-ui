@@ -9,6 +9,7 @@ export interface MaterialInterface {
     idclass: string;
     no: number;
     title: string;
+    url: string;
     video: string;
     videourl: string;
 }

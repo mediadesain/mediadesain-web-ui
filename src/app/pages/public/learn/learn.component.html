@@ -4,14 +4,12 @@
     <span></span>
     <div class="row">
       <div class="col-sm-3">
-        <ng-container *ngIf="!classesSrvc.databaseSrvc.isloading">
           <filter-checkbox *ngIf="classesSrvc.alldata"
               Title="Filter by"
               [data] ="classesSrvc.alldata"
               [FilterModel]="filterBy"
               [FilteredModel]="filterSelected">
           </filter-checkbox>
-      </ng-container>
       </div>
       <div class="col-sm-9">
         <div class="form-inline" style="float:left;">
@@ -34,8 +32,8 @@
         <br/><br/>
   
 
-        <div *ngIf="!classesSrvc.databaseSrvc.isloading && classesSrvc.alldata.length === 0" class="alert alert-secondary text-center">Tidak ada kelas</div>
-        <div *ngIf="classesSrvc.databaseSrvc.isloading">Loading</div>
+        <div *ngIf="classesSrvc.alldata.length === 0" class="alert alert-secondary text-center">Tidak ada kelas</div>
+        <div *ngIf="(classesSrvc.alldata|filter:filterSelected).length === 0" class="alert alert-secondary text-center">Kelas tidak ditemukan</div>
         <div *ngIf="classesSrvc.alldata" class="row">
           <div class="col-sm-4 mb-4" *ngFor="let item of (classesSrvc.alldata|filter:filterSelected)">
             <div class="card">

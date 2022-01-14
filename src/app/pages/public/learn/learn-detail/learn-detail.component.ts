@@ -24,7 +24,7 @@ export class LearnDetailComponent implements OnInit {
       this.classMaterialSrcv.getData(data.idclass)
     } else {
       this.activeRoute.paramMap.subscribe(params => {
-        // console.log('no state, get api:', params.get('classslug'))
+        console.log('no state, get api:', params.get('classslug'))
         this.classesSrvc.getDataDetail(params.get('classslug'))
       });
     }
