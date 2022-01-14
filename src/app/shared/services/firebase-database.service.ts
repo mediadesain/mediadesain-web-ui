@@ -8,7 +8,7 @@ import { GetDataInterface, WriteDataInterface } from '../interfaces/database.int
 })
 export class DatabaseService {
   data: any;
-  isloading: boolean;
+  isloading: boolean = false;
   constructor(){
     // ----- DATA STREAMING -----
     // firebase.database().ref('/product').on(
@@ -41,7 +41,7 @@ export class DatabaseService {
   }
 
 
-  async writeDatabase(parameter: WriteDataInterface){
+  writeDatabase(parameter: WriteDataInterface){
     console.log(parameter);
     this.isloading = true;
     if (parameter.type === 'set'){
@@ -49,7 +49,7 @@ export class DatabaseService {
       firebase.database().ref(parameter.url).set(parameter.value,
         (error) => {
           if (error) { console.log(error); }
-          else { 
+          else {
             parameter.isShowAlert && this.alertSuccess();
             this.isloading = false;
           }
@@ -61,7 +61,7 @@ export class DatabaseService {
       firebase.database().ref(parameter.url).update(parameter.value,
         (error) => {
           if (error) { console.log(error); }
-          else { 
+          else {
             parameter.isShowAlert && this.alertSuccess();
             this.isloading = false;
           }

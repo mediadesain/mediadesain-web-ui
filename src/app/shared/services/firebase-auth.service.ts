@@ -1,19 +1,17 @@
 
 import { Injectable } from '@angular/core';
-import { AppConfig } from '../../core/interfaces/appconfig';
 import firebase from "firebase/app";
 import "firebase/auth";
 import { Router } from '@angular/router';
-import { DatabaseService } from './database.service';
+import { DatabaseService } from './firebase-database.service';
 import { GetDataInterface } from '../interfaces/database.interface';
 import { UserInterface } from 'src/app/core/interfaces/user.interface';
-import { StorageService } from './storage.service';
+import { StorageService } from './firebase-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  appconfig: AppConfig;
   public data: UserInterface;
   public isAuth: boolean;
   public uid: string;
@@ -42,9 +40,10 @@ export class AuthService {
             url: '/v2/users/'+data.uid,
             type: 'set',
             value: data
-          }).finally( () => {
-            this.router.navigate([target])
           })
+          // .finally( () => {
+          //   this.router.navigate([target])
+          // })
         }
       })
       .catch( (error) => {
@@ -89,10 +88,6 @@ export class AuthService {
           this.isAuth = true;
           this.message = 'Masuk Berhasil';
           setTimeout( () => this.router.navigate([target]), 500)
-          // Local Storage
-          const locstorage = JSON.parse(localStorage.getItem('appconfig'));
-          locstorage.auth = true;
-          localStorage.setItem('appconfig', JSON.stringify(locstorage));
         }
       })
       .catch( (error) => {
@@ -110,10 +105,6 @@ export class AuthService {
         this.message = 'Terimaskasih, sampai jumpa !';
         this.hideMessage();
         this.router.navigate([target]);
-        // Local Storage
-        const locstorage = JSON.parse(localStorage.getItem('appconfig'));
-        locstorage.auth = false;
-        localStorage.setItem('appconfig', JSON.stringify(locstorage));
       })
       .catch( (error) => {/*this.message = error.message*/});
   }
