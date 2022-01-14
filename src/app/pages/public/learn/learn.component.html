@@ -36,9 +36,9 @@
         <div *ngIf="(classesSrvc.alldata|filter:filterSelected).length === 0" class="alert alert-secondary text-center">Kelas tidak ditemukan</div>
         <div *ngIf="classesSrvc.alldata" class="row">
           <div class="col-sm-4 mb-4" *ngFor="let item of (classesSrvc.alldata|filter:filterSelected)">
-            <div class="card">
+            <div class="card h-100">
               <div class="mds-img-loader landscape"><img *ngIf="item._thumbnail" [src]="item._thumbnail"/></div>
-              <div class="card-body">
+              <div class="card-body d-flex flex-column justify-content-between">
                 <a class="stretched-link" [routerLink]="'/kelas/'+item.url" [state]="item" (click)="classesSrvc.detail = item">
                   <p class="card-text">{{item.title}}</p>
                 </a>
