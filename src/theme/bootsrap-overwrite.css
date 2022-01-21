@@ -41,6 +41,7 @@ a:hover {color:var(--color-primary-dark);text-decoration: none}
 select.form-control { background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJMYXllcl8xIiBkYXRhLW5hbWU9IkxheWVyIDEiIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIiBzdHlsZT0iJiMxMDsiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO30uY2xzLTJ7ZmlsbDojNDQ0O308L3N0eWxlPjwvZGVmcz48dGl0bGU+YXJyb3dzPC90aXRsZT48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMS40MSA0LjY3IDIuNDggMy4xOCAzLjU0IDQuNjcgMS40MSA0LjY3Ii8+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjMuNTQgNS4zMyAyLjQ4IDYuODIgMS40MSA1LjMzIDMuNTQgNS4zMyIvPjwvc3ZnPg==) no-repeat 99% 50%; -moz-appearance: none; -webkit-appearance: none; appearance: none; background-color: #fff; }
 .input-group-text{border: 1px solid #f1f1f1}
 
+.list-group-item:hover {cursor: pointer;background-color: #f9f9f9;}
 .dropdown-item.active, .dropdown-item:active {background-color: var(--color-primary);}
 
 .card {border: 0; box-shadow: 0 0 20px #efefef;border-radius: 10px; overflow: hidden}
